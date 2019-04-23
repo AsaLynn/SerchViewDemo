@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/et_serch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_42"
+        android:layout_gravity="center"
+        android:drawablePadding="@dimen/dp_10"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/dp_10"
+        android:singleLine="true"
+        android:textSize="@dimen/sp_14" />
+
+    <ImageView
+        android:id="@+id/iv_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/et_serch"
+        android:layout_alignRight="@id/et_serch"
+        android:layout_alignBottom="@id/et_serch"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10" />
+</merge>
+

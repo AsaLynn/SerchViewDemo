@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.zxn.serchview.SerchView
+            android:id="@+id/sv_serch_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/c_00bb9c"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_20"
+            app:clearIcon="@drawable/update_table_delete"
+            app:serchBackground="@drawable/bg_d_sp_rec_r4_c_ffffff"
+            app:serchHint="请输入次卡名称"
+            app:serchIcon="@drawable/search" />
+
+    </LinearLayout>
+
+</LinearLayout>
