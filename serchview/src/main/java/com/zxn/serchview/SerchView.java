@@ -1,5 +1,6 @@
 package com.zxn.serchview;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
@@ -14,6 +15,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -91,6 +93,10 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
         if (view.getId() == R.id.iv_clear) {
             etSerch.getEditableText().clear();
             ivClear.setVisibility(View.GONE);
+            if (null != mOnSerchListener) {
+                mOnSerchListener.onClearSerch();
+            }
+            hideSoftKeyboard();
         }
     }
 
@@ -138,6 +144,7 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
             if (null != mOnSerchListener && !TextUtils.isEmpty(etSerch.getText())) {
                 mOnSerchListener.onSerch(etSerch.getText().toString());
             }
+            hideSoftKeyboard();
             return true;
         }
         return false;
@@ -153,6 +160,8 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
          * @param text the result.
          */
         void onSerch(String text);
+
+        void onClearSerch();
     }
 
     /**
@@ -164,5 +173,10 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
 
     public void setOnSerchListener(OnSerchListener listener) {
         this.mOnSerchListener = listener;
+    }
+
+    private void hideSoftKeyboard() {
+        InputMethodManager inputMethodManager = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(etSerch.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }
