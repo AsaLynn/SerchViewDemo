@@ -179,4 +179,23 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
         InputMethodManager inputMethodManager = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(etSerch.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
+
+    public EditText getSerchEditText() {
+        return etSerch;
+    }
+
+    public ImageView getClearView() {
+        return ivClear;
+    }
+
+    /**
+     * EditorInfo.TYPE_CLASS_NUMBER
+     *
+     * @attr ref android.R.styleable#TextView_inputType
+     * @see android.text.InputType
+     */
+    public void setInputType(int type) {
+        etSerch.setInputType(type);
+    }
+
 }
