@@ -190,8 +190,9 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
 
     /**
      * EditorInfo.TYPE_CLASS_NUMBER
+     * <p>
+     * (android.R.styleable#TextView_inputType)
      *
-     * @attr ref android.R.styleable#TextView_inputType
      * @see android.text.InputType
      */
     public void setInputType(int type) {
