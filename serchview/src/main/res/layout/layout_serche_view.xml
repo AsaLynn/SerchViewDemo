@@ -2,8 +2,9 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
+<!--sp_cursor_c_bbbbbb-->
     <EditText
+        android:textCursorDrawable="@drawable/sp_cursor_c_bbbbbb"
         android:id="@+id/et_serch"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_42"
