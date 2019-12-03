@@ -4,17 +4,19 @@
     android:layout_height="wrap_content">
 <!--sp_cursor_c_bbbbbb-->
     <EditText
+        android:paddingRight="@dimen/dp_30"
         android:textCursorDrawable="@drawable/sp_cursor_c_bbbbbb"
         android:id="@+id/et_serch"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_42"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/dp_42"
         android:layout_gravity="center"
-        android:drawablePadding="@dimen/dp_10"
+        android:drawablePadding="@dimen/dp_5"
         android:imeOptions="actionSearch"
         android:inputType="text"
-        android:maxLines="1"
-        android:paddingLeft="@dimen/dp_10"
-        android:singleLine="true"
+        android:maxLines="2"
+        android:paddingLeft="@dimen/dp_5"
+        android:singleLine="false"
         android:textSize="@dimen/sp_14" />
 
     <ImageView
