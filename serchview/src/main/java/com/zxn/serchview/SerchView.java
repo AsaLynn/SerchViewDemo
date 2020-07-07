@@ -32,6 +32,14 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
     private Drawable mSerchIconDrawable;
     private String mSerchHint;
     private Drawable mClearIconDrawable;
+    private String TAG = this.getClass().getSimpleName();
+    /**
+     * Listener used to dispatch serch events.
+     * This field should be made private, so it is hidden from the SDK.
+     * {@hide}
+     */
+    private OnSerchListener mOnSerchListener;
+    private OnTextChangedListener mOnTextChangedListener;
 
     public SerchView(Context context) {
         this(context, null);
@@ -46,6 +54,10 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
         initView();
         initAttributeSet(attrs);
         refreshView();
+    }
+
+    public void setOnTextChangedListener(OnTextChangedListener listener) {
+        this.mOnTextChangedListener = listener;
     }
 
     private void refreshView() {
@@ -117,7 +129,9 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+        if (null != mOnTextChangedListener) {
+            mOnTextChangedListener.onTextChanged(s);
+        }
     }
 
     @Override
@@ -135,8 +149,6 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
         }
     }
 
-    private String TAG = this.getClass().getSimpleName();
-
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
@@ -149,27 +161,6 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
         }
         return false;
     }
-
-    /**
-     * Interface definition for a callback to be invoked when a view is Serched.
-     */
-    public interface OnSerchListener {
-        /**
-         * Called when a view has been Serched.
-         *
-         * @param text the result.
-         */
-        void onSerch(String text);
-
-        void onClearSerch();
-    }
-
-    /**
-     * Listener used to dispatch serch events.
-     * This field should be made private, so it is hidden from the SDK.
-     * {@hide}
-     */
-    private OnSerchListener mOnSerchListener;
 
     public void setOnSerchListener(OnSerchListener listener) {
         this.mOnSerchListener = listener;
@@ -197,6 +188,25 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
      */
     public void setInputType(int type) {
         etSerch.setInputType(type);
+    }
+
+    /**
+     * Interface definition for a callback to be invoked when a view is Serched.
+     */
+    public interface OnSerchListener {
+        /**
+         * Called when a view has been Serched.
+         *
+         * @param text the result.
+         */
+        void onSerch(String text);
+
+        void onClearSerch();
+    }
+
+    public interface OnTextChangedListener {
+
+        void onTextChanged(CharSequence s);
     }
 
 }
