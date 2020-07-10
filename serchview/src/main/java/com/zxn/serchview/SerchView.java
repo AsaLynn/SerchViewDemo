@@ -179,15 +179,17 @@ public class SerchView extends RelativeLayout implements View.OnClickListener, T
         return ivClear;
     }
 
-    /**
-     * EditorInfo.TYPE_CLASS_NUMBER
-     * <p>
-     * (android.R.styleable#TextView_inputType)
-     *
-     * @see android.text.InputType
-     */
     public void setInputType(int type) {
         etSerch.setInputType(type);
+    }
+
+    public void clearSerch() {
+        etSerch.getEditableText().clear();
+        ivClear.setVisibility(View.GONE);
+        if (null != mOnSerchListener) {
+            mOnSerchListener.onClearSerch();
+        }
+        hideSoftKeyboard();
     }
 
     /**
